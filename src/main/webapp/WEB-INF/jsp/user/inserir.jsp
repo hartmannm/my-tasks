@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="${linkTo[TesteController].cadUsuario}">
-		Nome: <input type="text" name="usuario.nome" />
-		<br>
-		<button type="submit">Enviar</button>
-	</form>
+	Sucesso
 </body>
 </html>
