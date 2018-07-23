@@ -24,8 +24,7 @@ public class UserService implements IUserService{
 
 	@Override
 	public void createUser(User user) {
-		System.out.println("service");
-		userRepository.createUser(user);
+		
 	}
 	
 }

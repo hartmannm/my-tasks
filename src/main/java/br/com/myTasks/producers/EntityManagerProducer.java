@@ -2,6 +2,7 @@ package br.com.myTasks.producers;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,11 +22,11 @@ public class EntityManagerProducer{
 		return factory.createEntityManager();
 	}
 
-	public void closeFactory(EntityManagerFactory factory) {
+	public void closeFactory(@Disposes EntityManagerFactory factory) {
 		factory.close();
 	}
 
-	public void closeManager(EntityManager manager) {
+	public void closeManager(@Disposes EntityManager manager) {
 		manager.close();	
 	}
 	
