@@ -7,6 +7,8 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.myTasks.annotations.DataBaseAccess;
+import br.com.myTasks.exceptions.UserExistenceExcepion;
 import br.com.myTasks.interfaces.IUserService;
 import br.com.myTasks.interfaces.IUserValidator;
 import br.com.myTasks.models.entityes.User;
@@ -15,7 +17,7 @@ import br.com.myTasks.models.entityes.User;
 @Path("/usuario")
 public class UserController {
 	
-	private IUserService service;
+	private IUserService userService;
 	private Result result;
 	private IUserValidator userValidator;
 	
@@ -25,8 +27,8 @@ public class UserController {
 	}
 
 	@Inject
-	public UserController(IUserService service, Result result, IUserValidator userValidator) {
-		this.service = service;
+	public UserController(IUserService userService, Result result, IUserValidator userValidator) {
+		this.userService = userService;
 		this.result = result;
 		this.userValidator = userValidator;
 	}
@@ -36,10 +38,19 @@ public class UserController {
 		result.include("title", "Cadastro de usuário");
 	}
 	
+	@DataBaseAccess
 	@Post("/cadastro") 
 	public void cadastro(User user) {
 		userValidator.validate(user);
 		userValidator.onErrorRedirectTo(this).cadastro();
+		
+		try {
+			userService.createUser(user);
+			result.redirectTo("https://www.facebook.com/");
+		} catch (UserExistenceExcepion e) {
+			result.include("errorMessage", e.getMessage());
+			result.redirectTo(this).cadastro();
+		}
 	}
 	
 }
