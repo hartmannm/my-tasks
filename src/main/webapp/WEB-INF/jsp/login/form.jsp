@@ -11,14 +11,14 @@
 		<label for="user.email">Email</label>
 		<div class="input-group">
 			<input type="email" class="form-control" name="user.email" value="${user.email}"> 
-			<label for="user.email" generated="true" class="invalid-feedback"></label>
+			<span for="user.email">${errors.from('user.email')}</span>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="user.password">Senha</label>
 		<div class="input-group">
 			<input type="password" class="form-control" name="user.password"> 
-			<label for="user.password" generated="true" class="invalid-feedback"></label>
+			<span for="user.password">${errors.from('user.password')}</span>
 		</div>
 	</div>
 
