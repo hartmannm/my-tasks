@@ -1,7 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <form method="POST" action="${linkTo[UserController].cadastro}">
+	<c:if test="${not empty errorMessage}">
+		<c:import url="../commons/msgErrorAlert.jsp" />
+	</c:if>
+
 	<!--nome de usuário-->
 	<div class="form-group">
 		<label for="nome">Nome de usuário</label>
@@ -37,10 +42,10 @@
 
 	<div class="row justify-content-start">
 		<button type="submit" class="btn btn-primary">
-			Cadastrar <i class="fas fa-check-circle"></i>
+			Cadastrar
 		</button>
 		<button type="reset" class="btn btn-danger">
-			Limpar <i class="fas fa-times-circle"></i>
+			Limpar
 		</button>
 	</div>
 </form>

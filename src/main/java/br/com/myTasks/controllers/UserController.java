@@ -1,5 +1,8 @@
 package br.com.myTasks.controllers;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -7,6 +10,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 import br.com.myTasks.annotations.DataBaseAccess;
 import br.com.myTasks.exceptions.UserExistenceExcepion;
 import br.com.myTasks.interfaces.IUserService;
@@ -50,6 +54,9 @@ public class UserController {
 		} catch (UserExistenceExcepion e) {
 			result.include("errorMessage", e.getMessage());
 			result.redirectTo(this).cadastro();
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			result.include("errorMessage", "Erro interno do sistema, desculpe pelo transtorno!");
+			result.use(Results.status()).internalServerError();
 		}
 	}
 	
