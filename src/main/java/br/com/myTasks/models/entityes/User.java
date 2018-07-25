@@ -1,6 +1,7 @@
 package br.com.myTasks.models.entityes;
 
 import javax.enterprise.context.RequestScoped;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,12 +16,19 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(nullable = false)
+	
+	@Basic(optional=false)
+	@Column(nullable = false, length=50)
 	private String name;
-	@Column(nullable = false)
+	
+	@Basic(optional=false)
+	@Column(nullable = false, length=50, unique=true)
 	private String email;
-	@Column(nullable = false)
+	
+	@Basic(optional=false)
+	@Column(nullable = false, length=50)
 	private String password;
+	
 	@Transient
 	private String passwordConfirm;
 
