@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-import br.com.myTasks.annotations.DataBaseAccess;
 import br.com.myTasks.interfaces.IUserRepository;
 import br.com.myTasks.models.entityes.User;
 
@@ -28,8 +27,8 @@ public class UserRepository implements IUserRepository{
 	@SuppressWarnings("unused")
 	@Override
 	public boolean userExist(User user) {
-		String queryString = "select u from User u where u.email = :email";
 		try {
+			String queryString = "select u from User u where u.email = :email";
 			TypedQuery<User> query = manager.createQuery(queryString, User.class);
 			query.setParameter("email", user.getEmail());
 			User dbUser = query.getSingleResult();	

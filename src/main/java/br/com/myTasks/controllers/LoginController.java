@@ -7,6 +7,10 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.myTasks.annotations.DataBaseAccess;
+import br.com.myTasks.exceptions.EncryptionException;
+import br.com.myTasks.exceptions.UserExistenceExcepion;
+import br.com.myTasks.interfaces.ILoginService;
 import br.com.myTasks.interfaces.ILoginValidator;
 import br.com.myTasks.models.entityes.User;
 
@@ -16,16 +20,18 @@ public class LoginController {
 
 	private Result result;
 	private ILoginValidator loginValidator;
+	private ILoginService loginService;
 	
 	@Deprecated
 	public LoginController( ) {
-		this(null, null);
+		this(null, null, null);
 	}
 	
 	@Inject
-	public LoginController(Result result, ILoginValidator loginValidator) {
+	public LoginController(Result result, ILoginValidator loginValidator, ILoginService loginService) {
 		this.result = result;
 		this.loginValidator = loginValidator;
+		this.loginService = loginService;
 	}
 	
 	@Get("/login")
@@ -33,12 +39,19 @@ public class LoginController {
 		result.include("title", "Login");
 	}
 	
+	@DataBaseAccess
 	@Post("/login")
 	public void login(User user) {
 		loginValidator.validate(user);
 		loginValidator.onErrorRedirectTo(this).login();
 		
-		
+		try {
+			loginService.login(user);
+		} catch (UserExistenceExcepion | EncryptionException e) {
+			result.include("errorMessage", e.getMessage());
+			result.redirectTo(this).login();
+		}
+		result.redirectTo("https://github.com/RealDavis/my-tasks");
 	}
 	
 }

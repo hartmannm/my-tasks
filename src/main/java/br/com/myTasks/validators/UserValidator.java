@@ -37,8 +37,8 @@ public class UserValidator implements IUserValidator{
 			validator.add(new I18nMessage("user.password", "password.message"));
 		}
 		//confirmPassword
-		if(user.getPassword() != null && !user.getPassword().equals(user.getPassword()) 
-					|| user.getPasswordConfirm() == null) {
+		if((user.getPassword() != null && !user.getPassword().equals(user.getPasswordConfirm()) 
+				|| user.getPasswordConfirm() == null)) {
 			validator.add(new I18nMessage("user.passwordConfirm", "password.dont.match"));
 		}
 	}

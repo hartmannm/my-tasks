@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import br.com.myTasks.exceptions.EncryptionException;
 import br.com.myTasks.exceptions.UserExistenceExcepion;
 import br.com.myTasks.interfaces.IEncrypt;
 import br.com.myTasks.interfaces.IUserRepository;
@@ -30,11 +31,17 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public void createUser(User user) throws UserExistenceExcepion, NoSuchAlgorithmException, UnsupportedEncodingException {
+	public void createUser(User user) throws UserExistenceExcepion, EncryptionException{
 		if(userRepository.userExist(user)) {
 			throw new UserExistenceExcepion("Usuário inválido, escolha outro endereço de email");
 		}
-		user.setPassword(encrypt.encryptPassword(user.getPassword()));
+		
+		try {
+			user.setPassword(encrypt.encryptPassword(user.getPassword()));
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			throw new EncryptionException("Erro interno no sistema, desculpe pelo transtorno");
+		}
+		
 		userRepository.insert(user);
 	}
 	
