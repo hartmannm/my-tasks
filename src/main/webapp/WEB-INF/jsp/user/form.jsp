@@ -8,43 +8,35 @@
 	</c:if>
 
 	<!--nome de usuário-->
-	<div class="form-group">
-		<label for="nome">Nome de usuário</label>
-		<div class="input-group">
-			<input type="text" class="form-control" name="user.name" value="${user.name}">
-			<span class="error">${errors.from('user.name')}</span>
-		</div>
+	<div>
+		<label for="user.name">Nome de usuário</label>
+		<input type="text" name="user.name" value="${user.name}">
+		<span>${errors.from('user.name')}</span>
 	</div>
 	<!--email-->
-	<div class="form-group">
-		<label for="email">Email</label>
-		<div class="input-group">
-			<input type="email" class="form-control" name="user.email" value="${user.email}"> 
-			<span class="error">${errors.from('user.email')}</span>
-		</div>
+	<div>
+		<label for="user.email">Email</label>
+		<input type="email" name="user.email" value="${user.email}"> 
+		<span>${errors.from('user.email')}</span>
 	</div>
 	<!--senha-->
-	<div class="form-group">
+	<div>
 		<label for="user.password">Senha</label>
-		<div class="input-group">
-			<input type="password" class="form-control" name="user.password" />
-			<span class="error">${errors.from('user.password')}</span>
-		</div>
+		<input type="password" name="user.password" />
+		<span>${errors.from('user.password')}</span>
 	</div>
 	<!--repetição de senha-->
-	<div class="form-group">
+	<div>
 		<label for="user.passwordConfirm">Repita a senha</label>
-		<div class="input-group">
-			<input type="password" class="form-control" name="user.passwordConfirm" />
-			<span class="error">${errors.from('user.passwordConfirm')}</span>
-		</div>
+		<input type="password" name="user.passwordConfirm" />
+		<span>${errors.from('user.passwordConfirm')}</span>
 	</div>
 
-	<div class="row justify-content-start">
-		<button type="submit" class="btn btn-primary">
+	<div>
+		<button type="submit">
 			Cadastrar
 		</button>
-		<button type="reset" class="btn btn-danger">
+		<button type="reset">
 			Limpar
 		</button>
 	</div>

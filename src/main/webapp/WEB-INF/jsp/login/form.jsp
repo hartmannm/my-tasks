@@ -7,28 +7,23 @@
 		<c:import url="../commons/msgErrorAlert.jsp" />
 	</c:if>
 
-	<div class="form-group">
+	<div>
 		<label for="user.email">Email</label>
-		<div class="input-group">
-			<input type="email" class="form-control" name="user.email" value="${user.email}"> 
-			<span>${errors.from('user.email')}</span>
-		</div>
+		<input type="email" name="user.email" value="${user.email}"> 
+		<span>${errors.from('user.email')}</span>
 	</div>
-	<div class="form-group">
+	<div>
 		<label for="user.password">Senha</label>
-		<div class="input-group">
-			<input type="password" class="form-control" name="user.password"> 
-			<span>${errors.from('user.password')}</span>
-		</div>
+		<input type="password" name="user.password"> 
+		<span>${errors.from('user.password')}</span>
 	</div>
-
-	<div class="row">
-		<button type="submit" class="btn btn-primary">
+	<div>
+		<button type="submit">
 			Entrar
 		</button>
 	</div>
 </form>
-<div class="row">
+<div>
 	Ainda não tem uma conta? 
 	<a href="${linkTo[UserController].cadastro}">
 		<span class="strong">Criar conta</span>

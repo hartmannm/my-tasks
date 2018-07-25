@@ -14,5 +14,4 @@ Tecnologias utilizadas:
 * Wildfly 8.1
 * MySQL 8.0.11
 * Maven
-* Bootstrap
 * JQuery Validate
