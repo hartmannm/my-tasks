@@ -6,7 +6,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 
 @SessionScoped
-@Named("userLogged")
+@Named("loggedUser")
 public class LoggedUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;

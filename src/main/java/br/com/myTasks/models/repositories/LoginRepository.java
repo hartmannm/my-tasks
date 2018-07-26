@@ -7,34 +7,38 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import br.com.myTasks.interfaces.ILoginRepository;
+import br.com.myTasks.models.entityes.LoggedUser;
 import br.com.myTasks.models.entityes.User;
 
 @RequestScoped
 public class LoginRepository implements ILoginRepository{
 
 	private EntityManager manager;
+	private LoggedUser loggedUser;
 	
 	@Deprecated
 	public LoginRepository() {
-		this(null);
+		this(null, null);
 	}
 	
 	@Inject
-	public LoginRepository(EntityManager manager) {
+	public LoginRepository(EntityManager manager, LoggedUser loggeduser) {
 		this.manager = manager;
+		this.loggedUser = loggeduser;
 	}
 	
 	@Override
 	public User getUser(User user) throws NoResultException{
-		User dbuser = null;
+		User dbUser = null;
 		
 		String queryString = "select u from User u where u.email = :email and u.password = :password";
 		TypedQuery<User> query = manager.createQuery(queryString, User.class);
 		query.setParameter("email", user.getEmail());
 		query.setParameter("password", user.getPassword());
-		dbuser = query.getSingleResult();
+		dbUser = query.getSingleResult();
+		loggedUser.setUser(dbUser);
 		
-		return dbuser;
+		return dbUser;
 	}
 
 }

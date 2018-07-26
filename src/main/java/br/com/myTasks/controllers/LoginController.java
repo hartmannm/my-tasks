@@ -51,7 +51,7 @@ public class LoginController {
 			result.include("errorMessage", e.getMessage());
 			result.redirectTo(this).login();
 		}
-		result.redirectTo("https://github.com/RealDavis/my-tasks");
+		result.redirectTo("/");
 	}
 	
 }
