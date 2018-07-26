@@ -8,15 +8,16 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @RequestScoped
 @Entity
 public class Task {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	private Long id;
 
 	@Basic(optional = false)
@@ -24,16 +25,20 @@ public class Task {
 	private String name;
 
 	@Basic(optional = false)
-	@Column(nullable = false, columnDefinition="DATE")
+	@Column(nullable = false, columnDefinition = "DATE")
 	private LocalDate date;
 
 	@Basic(optional = true)
-	@Column(nullable = true, columnDefinition="TIME")
+	@Column(nullable = true, columnDefinition = "TIME")
 	private LocalTime hour;
 
 	@Basic(optional = true)
 	@Column(nullable = true)
 	private String details;
+
+	@Basic(optional = false)
+	@ManyToOne
+	private User user;
 
 	public Long getId() {
 		return id;
@@ -73,6 +78,14 @@ public class Task {
 
 	public void setDetails(String details) {
 		this.details = details;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
