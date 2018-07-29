@@ -36,15 +36,15 @@ public class UserController {
 	}
 	
 	@Get("/cadastro")
-	public void cadastro() {
+	public void register() {
 		result.include("title", "Cadastro de usuário");
 	}
 	
 	@DataBaseAccess
 	@Post("/cadastro") 
-	public void cadastro(User user) {
+	public void register(User user) {
 		userValidator.validate(user);
-		userValidator.onErrorRedirectTo(this).cadastro();
+		userValidator.onErrorRedirectTo(this).register();
 		try {
 			//salva a senha digitada para ser usada no login
 			String password = user.getPassword();
@@ -55,7 +55,7 @@ public class UserController {
 			result.forwardTo(LoginController.class).login(user);
 		} catch (UserExistenceExcepion e) {
 			result.include("errorMessage", e.getMessage());
-			result.redirectTo(this).cadastro();
+			result.redirectTo(this).register();
 		} catch (EncryptionException e) {
 			result.include("errorMessage", e.getMessage());
 			result.use(Results.status()).internalServerError();

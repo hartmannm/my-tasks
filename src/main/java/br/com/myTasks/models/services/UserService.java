@@ -1,8 +1,5 @@
 package br.com.myTasks.models.services;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 

@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<form method="POST" action="${linkTo[UserController].cadastro}">
+<form method="POST" action="${linkTo[UserController].register}">
 	<c:if test="${not empty errorMessage}">
 		<c:import url="../commons/msgErrorAlert.jsp" />
 	</c:if>
