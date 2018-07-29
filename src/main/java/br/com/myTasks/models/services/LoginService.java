@@ -1,13 +1,8 @@
 package br.com.myTasks.models.services;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.persistence.NoResultException;
 
-import br.com.myTasks.exceptions.EncryptionException;
 import br.com.myTasks.exceptions.UserExistenceExcepion;
 import br.com.myTasks.interfaces.IEncrypt;
 import br.com.myTasks.interfaces.ILoginRepository;
@@ -19,8 +14,7 @@ public class LoginService implements ILoginService {
 
 	private IEncrypt encrypt;
 	private ILoginRepository loginRepository;
-	
-	
+
 	@Deprecated
 	public LoginService() {
 		this(null, null);
@@ -33,17 +27,15 @@ public class LoginService implements ILoginService {
 	}
 
 	@Override
-	public User login(User user) throws EncryptionException, UserExistenceExcepion {
+	public User login(User user) throws UserExistenceExcepion {
 		User dbUser = null;
-		try {
-			user.setPassword(encrypt.encryptPassword(user.getPassword()));
-			dbUser = loginRepository.getUser(user);
-		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			throw new EncryptionException("Erro interno no sistema, desculpe pelo transtorno");
-		}catch (NoResultException e) {
-			throw new UserExistenceExcepion("Usuário não encontrado. Verifique seu email e senha");
+		user.setPassword(encrypt.encryptPassword(user.getPassword()));
+		dbUser = loginRepository.getUser(user);
+
+		if (dbUser == null) {
+			throw new UserExistenceExcepion("Usuário não encontrado, verifique seu email e senha");
 		}
-		
+
 		return dbUser;
 	}
 

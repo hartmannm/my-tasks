@@ -17,15 +17,15 @@ public class User {
 	private Long id;
 	
 	@Basic(optional=false)
-	@Column(nullable = false, length=50)
+	@Column(nullable = false, length = 250)
 	private String name;
 	
 	@Basic(optional=false)
-	@Column(nullable = false, length=50, unique=true)
+	@Column(nullable = false, unique=true, length = 250)
 	private String email;
 	
 	@Basic(optional=false)
-	@Column(nullable = false, length=50)
+	@Column(nullable = false, length = 250)
 	private String password;
 	
 	@Transient

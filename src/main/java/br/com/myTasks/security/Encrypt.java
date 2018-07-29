@@ -12,19 +12,24 @@ import br.com.myTasks.interfaces.IEncrypt;
 public class Encrypt implements IEncrypt{
 
 	@Override
-	public String encryptPassword(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	public String encryptPassword(String password) {
 		String encryptedPassword = "";
 
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		byte messageDigest[] = md.digest(password.getBytes("UTF-8"));
-		StringBuilder hexString = new StringBuilder();
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("SHA-256");
+			byte messageDigest[] = md.digest(password.getBytes("UTF-8"));
+			StringBuilder hexString = new StringBuilder();
 
-		for (byte b : messageDigest) {
-			hexString.append(String.format("%02X", 0xFF & b));
+			for (byte b : messageDigest) {
+				hexString.append(String.format("%02X", 0xFF & b));
 
-			encryptedPassword = hexString.toString();
+				encryptedPassword = hexString.toString();
+			}
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			throw new RuntimeException();
 		}
-
+		
 		return encryptedPassword;
 	}
 

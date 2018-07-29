@@ -4,6 +4,6 @@
 
     <c:import url="../commons/head.jsp" />
     
-    ${loggedUser.name}
+    ${session.user.name} - ${session.user.id}
     
     <c:import url="../commons/endBody.jsp" />

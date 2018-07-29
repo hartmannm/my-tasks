@@ -14,16 +14,16 @@ import br.com.myTasks.interfaces.IUserService;
 import br.com.myTasks.models.entityes.User;
 
 @RequestScoped
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 
 	private IUserRepository userRepository;
 	private IEncrypt encrypt;
-	
+
 	@Deprecated
 	public UserService() {
 		this(null, null);
 	}
-	
+
 	@Inject
 	public UserService(IUserRepository userRepository, IEncrypt encrypt) {
 		this.userRepository = userRepository;
@@ -31,18 +31,12 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public void createUser(User user) throws UserExistenceExcepion, EncryptionException{
-		if(userRepository.userExist(user)) {
+	public void createUser(User user) throws UserExistenceExcepion, EncryptionException {
+		if (userRepository.userExist(user)) {
 			throw new UserExistenceExcepion("Usuário inválido, escolha outro endereço de email");
 		}
-		
-		try {
-			user.setPassword(encrypt.encryptPassword(user.getPassword()));
-		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			throw new EncryptionException("Erro interno no sistema, desculpe pelo transtorno");
-		}
-		
+		user.setPassword(encrypt.encryptPassword(user.getPassword()));
 		userRepository.insert(user);
 	}
-	
+
 }
