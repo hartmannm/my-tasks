@@ -6,4 +6,11 @@
     
     <c:import url="form.jsp" />
     
+    <div>
+		Ainda não tem uma conta? 
+		<a href="${linkTo[UserController].register}">
+			<span class="strong">Criar conta</span>
+		</a>
+	</div>
+    
     <c:import url="../commons/endBody.jsp" />

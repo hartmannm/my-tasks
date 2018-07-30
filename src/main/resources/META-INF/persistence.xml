@@ -6,9 +6,7 @@
 
 	<persistence-unit name="my_tasks" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-		<class>br.com.caelum.vraptor.converter.LocalTimeConverter</class>
-		<class>br.com.caelum.vraptor.converter.LocalDateConverter</class>
+		
 		<class>br.com.myTasks.models.entityes.User</class>
 		<class>br.com.myTasks.models.entityes.Task</class>
 

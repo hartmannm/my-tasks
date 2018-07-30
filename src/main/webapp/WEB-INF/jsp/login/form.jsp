@@ -23,9 +23,3 @@
 		</button>
 	</div>
 </form>
-<div>
-	Ainda não tem uma conta? 
-	<a href="${linkTo[UserController].cadastro}">
-		<span class="strong">Criar conta</span>
-	</a>
-</div>

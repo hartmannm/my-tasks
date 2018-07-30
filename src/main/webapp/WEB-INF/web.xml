@@ -16,4 +16,13 @@
 		<param-value>UTF-8</param-value>
 	</context-param>
 
+	<context-param>
+	    <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+	    <param-value>pt_BR</param-value>
+	</context-param>
+	
+	<session-config>
+		<session-timeout>50</session-timeout>
+	</session-config>
+
 </web-app>

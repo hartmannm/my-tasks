@@ -20,7 +20,7 @@ public class Task {
 	private Long id;
 
 	@Basic(optional = false)
-	@Column(nullable = false, length = 80)
+	@Column(nullable = false, length = 50)
 	private String name;
 
 	@Basic(optional = false)
@@ -32,8 +32,12 @@ public class Task {
 	private LocalTime hour;
 
 	@Basic(optional = true)
-	@Column(nullable = true)
+	@Column(nullable = true, length = 100)
 	private String details;
+
+	@Basic(optional = false)
+	@Column(nullable = false)
+	private boolean finished = false;
 
 	@Basic(optional = false)
 	@ManyToOne
@@ -77,6 +81,14 @@ public class Task {
 
 	public void setDetails(String details) {
 		this.details = details;
+	}
+
+	public boolean isFinished() {
+		return finished;
+	}
+
+	public void setFinished(boolean finished) {
+		this.finished = finished;
 	}
 
 	public User getUser() {
