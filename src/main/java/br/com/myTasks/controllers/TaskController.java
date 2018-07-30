@@ -7,6 +7,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.myTasks.annotations.DataBaseAccess;
 import br.com.myTasks.interfaces.ITaskService;
 import br.com.myTasks.interfaces.ITaskValidator;
 import br.com.myTasks.models.entityes.Task;
@@ -36,12 +37,15 @@ public class TaskController {
 		result.include("title", "Cadastro de tarefa");
 	}
 	
+	@DataBaseAccess
 	@Post("/cadastro")
 	public void register(Task task) {
 		validator.validate(task);
 		validator.onErrorRedirectTo(this).register();
 
 		taskService.createTask(task);
+		result.include("successMessage", "Tarefa cadastrada com sucesso!");
+		result.forwardTo(HomeController.class).home();
 	}
 	
 }

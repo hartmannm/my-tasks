@@ -24,11 +24,11 @@ public class Task {
 	private String name;
 
 	@Basic(optional = false)
-	@Column(nullable = false, columnDefinition = "DATE")
+	@Column(nullable = false)
 	private LocalDate date;
 
 	@Basic(optional = true)
-	@Column(nullable = true, columnDefinition = "TIME")
+	@Column(nullable = true)
 	private LocalTime hour;
 
 	@Basic(optional = true)
