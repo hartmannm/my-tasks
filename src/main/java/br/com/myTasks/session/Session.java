@@ -32,7 +32,7 @@ public class Session implements Serializable, ISession {
 
 	@Override
 	public boolean isLogged() {
-		return user == null;
+		return this.user != null;
 	}
 	
 }

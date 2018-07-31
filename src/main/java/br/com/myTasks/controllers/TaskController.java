@@ -8,12 +8,14 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.myTasks.annotations.DataBaseAccess;
+import br.com.myTasks.annotations.NeedToBeLogged;
 import br.com.myTasks.interfaces.ITaskService;
 import br.com.myTasks.interfaces.ITaskValidator;
 import br.com.myTasks.models.entityes.Task;
 
 @Controller
 @Path("/tarefa")
+@NeedToBeLogged
 public class TaskController {
 
 	private Result result;

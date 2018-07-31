@@ -4,6 +4,10 @@
     
     <c:import url="../commons/head.jsp" />
     
+    <c:if test="${not empty errorMessage}">
+		<c:import url="../commons/msgErrorAlert.jsp" />
+	</c:if>
+    
     <c:import url="form.jsp" />
     
     <div>

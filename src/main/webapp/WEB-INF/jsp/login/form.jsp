@@ -3,10 +3,6 @@
 	pageEncoding="UTF-8"%>
 
 <form method="POST" action="${linkTo[LoginController].login}">
-	<c:if test="${not empty errorMessage}">
-		<c:import url="../commons/msgErrorAlert.jsp" />
-	</c:if>
-
 	<div>
 		<label for="user.email">Email</label>
 		<input type="email" name="user.email" value="${user.email}"> 
