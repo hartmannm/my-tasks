@@ -1,12 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
     <form method="POST" action="${linkTo[TaskController].register}">
-	<c:if test="${not empty errorMessage}">
-		<c:import url="../commons/msgErrorAlert.jsp" />
-	</c:if>
-
 	<!--tarefa-->
 	<div>
 		<label for="task.name">Tarefa</label>
@@ -21,13 +17,13 @@
 	</div>
 	<!--horario-->
 	<div>
-		<label for="task.hour">Horário</label>
+		<label for="task.hour">HorÃ¡rio</label>
 		<input type="time" name="task.hour" value="${task.hour}"> 
 		<span>${errors.from('task.hour')}</span>
 	</div>
-	<!--observações-->
+	<!--observaÃ§Ãµes-->
 	<div>
-		<label for="task.details">Observações</label>
+		<label for="task.details">ObservaÃ§Ãµes</label>
 		<textarea name="task.details" rows="3">${task.details}</textarea>
 		<span>${errors.from('task.details')}</span>
 	</div>

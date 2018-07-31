@@ -50,7 +50,7 @@ public class LoginController {
 		
 		try {
 			session.login(loginService.login(user));
-			result.redirectTo("/");
+			result.redirectTo(HomeController.class).home();
 		} catch (UserExistenceExcepion e) {
 			result.include("errorMessage", e.getMessage());
 			result.redirectTo(this).login();
