@@ -34,7 +34,9 @@
 				    		</c:otherwise>
 				    	</c:choose>
 	    			</td>
-	    			<td></td>
+	    			<td>
+	    				<a href="${linkTo[TaskController].remove(task.id)}">Excluir</a>
+	    			</td>
 	    		</tr>
 	    	</c:forEach>
 	    </tbody>

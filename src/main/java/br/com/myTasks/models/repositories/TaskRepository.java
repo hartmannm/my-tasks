@@ -30,6 +30,11 @@ public class TaskRepository implements ITaskRepository {
 	public void insert(Task task) {
 		manager.persist(task);
 	}
+	
+	@Override
+	public Task get(Long id) {
+		return manager.find(Task.class, id);
+	}
 
 	@Override
 	public List<Task> getAll(User user) {
@@ -38,5 +43,12 @@ public class TaskRepository implements ITaskRepository {
 		query.setParameter("user", user);
 		return query.getResultList();
 	}
+
+	@Override
+	public void remove(Task task) {
+		manager.remove(task);
+	}
+
+	
 
 }

@@ -60,6 +60,12 @@ public class TaskService implements ITaskService {
 		return map;
 	}
 	
+	@Override
+	public void remove(Long id) {
+		Task task = taskRepository.get(id);
+		taskRepository.remove(task);
+	}
+
 	//métodos para criar e preencher lists e maps
 	private void createLists() {
 		pastTasks = new ArrayList<>();

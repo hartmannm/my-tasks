@@ -13,4 +13,6 @@ public interface ITaskService {
 	
 	Map<String, List<Task>> getTaskList(User user) throws NoTasksException;
 	
+	void remove(Long id);
+	
 }

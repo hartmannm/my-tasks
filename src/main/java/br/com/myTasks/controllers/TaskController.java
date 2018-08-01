@@ -47,7 +47,15 @@ public class TaskController {
 
 		taskService.createTask(task);
 		result.include("successMessage", "Tarefa cadastrada com sucesso!");
-		result.forwardTo(HomeController.class).home();
+		result.redirectTo(HomeController.class).home();
+	}
+	
+	@DataBaseAccess
+	@Get("/excluir/{id}")
+	public void remove(Long id) {
+		taskService.remove(id);
+		result.include("successMessage", "Tarefa excluída com sucesso!");
+		result.redirectTo(HomeController.class).home();
 	}
 	
 }

@@ -10,6 +10,7 @@
     <c:if test="${not empty alertMessage}">
 		<c:import url="../commons/msgAlertAlert.jsp" />
 	</c:if>
+	
     
     <h2>Tarefas Passadas</h2>
     <c:if test="${not empty pastTasks}">
