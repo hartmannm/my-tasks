@@ -11,10 +11,19 @@
 		<c:import url="../commons/msgAlertAlert.jsp" />
 	</c:if>
     
-    <c:import url="pastTasks.jsp" />
+    <h2>Tarefas Passadas</h2>
+    <c:if test="${not empty pastTasks}">
+		<c:import url="pastTasksTable.jsp" />
+	</c:if>
     <br/>
-    <c:import url="presentTasks.jsp" />
+    <h2>Tarefas para hoje</h2>
+    <c:if test="${not empty presentTasks}">
+		<c:import url="presentTasksTable.jsp" />
+	</c:if>
     <br/>
-    <c:import url="futureTasks.jsp" />
+    <h2>Tarefas futuras</h2>
+    <c:if test="${not empty futureTasks}">
+		<c:import url="futureTasksTable.jsp" />
+	</c:if>
     
     <c:import url="../commons/endBody.jsp" />
