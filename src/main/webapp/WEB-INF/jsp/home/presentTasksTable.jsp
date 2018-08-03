@@ -24,16 +24,7 @@
 	    			</td>
 	    			<td>${task.hour}</td>
 	    			<td>${task.details}</td>
-	    			<td>
-	    				<c:choose>
-				    		<c:when test="${task.finished}">
-				    			<c:out value="Concluido"/>
-				    		</c:when>
-				    		<c:otherwise>
-				    			<c:out value="Em aberto"/>
-				    		</c:otherwise>
-				    	</c:choose>
-	    			</td>
+	    			<td>Concluido</td>
 	    			<td>
 	    				<c:if test="${not task.finished}">
 	    					<a href="${linkTo[TaskController].finish(task.id)}">Finalizar</a>
