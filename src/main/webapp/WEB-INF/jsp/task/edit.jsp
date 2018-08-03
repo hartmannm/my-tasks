@@ -4,10 +4,20 @@
 
 	<c:import url="../commons/head.jsp" />
 
-	<c:if test="${not empty errorMessage}">
-		<c:import url="../commons/msgErrorAlert.jsp" />
-	</c:if>
-
-	<c:import url="form.jsp" />
+	<div class="row">
+    	<div class="col s12">
+    	
+	    	<main>
+	    		<div class="card-panel">
+       				<c:if test="${not empty errorMessage}">
+						<c:import url="../commons/msgErrorAlert.jsp" />
+					</c:if>
+				    
+				    <c:import url="form.jsp" />
+     			</div>
+	    	</main>
+	    	
+    	</div>
+    </div>
 
 	<c:import url="../commons/endBody.jsp" />
