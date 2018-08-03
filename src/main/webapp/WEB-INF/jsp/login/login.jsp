@@ -4,17 +4,25 @@
     
     <c:import url="../commons/head.jsp" />
     
-    <c:if test="${not empty errorMessage}">
-		<c:import url="../commons/msgErrorAlert.jsp" />
-	</c:if>
-    
-    <c:import url="form.jsp" />
-    
-    <div>
-		Ainda não tem uma conta? 
-		<a href="${linkTo[UserController].register}">
-			<span class="strong">Criar conta</span>
-		</a>
-	</div>
+    <div class="row">
+    	<div class="col s12 m5 g5">
+	    	<main>
+	    		<div class="card-panel">
+       				<c:if test="${not empty errorMessage}">
+						<c:import url="../commons/msgErrorAlert.jsp" />
+					</c:if>
+				    
+				    <c:import url="form.jsp" />
+				    
+				    <div class="center-align">
+						Ainda não tem uma conta? 
+						<a href="${linkTo[UserController].register}">
+							<span class="strong">Criar conta</span>
+						</a>
+					</div>
+     			</div>
+	    	</main>
+    	</div>
+    </div>
     
     <c:import url="../commons/endBody.jsp" />

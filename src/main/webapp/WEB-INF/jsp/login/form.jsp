@@ -3,19 +3,20 @@
 	pageEncoding="UTF-8"%>
 
 <form method="POST" action="${linkTo[LoginController].login}">
-	<div>
-		<label for="user.email">Email</label>
-		<input type="email" name="user.email" value="${user.email}"> 
+	<div class="input-field col s12">
+		<input type="email" name="user.email" value="${user.email}" class="validate">
+		<label for="user.email" class="active">Email</label>
 		<span>${errors.from('user.email')}</span>
-	</div>
-	<div>
-		<label for="user.password">Senha</label>
-		<input type="password" name="user.password"> 
+    </div>
+    <div class="input-field col s12">
+		<input type="password" name="user.password" class="validate">
+		<label for="user.password" class="active">Senha</label>
 		<span>${errors.from('user.password')}</span>
-	</div>
+    </div>
 	<div>
-		<button type="submit">
+		<button class="btn waves-effect waves-light" type="submit">
 			Entrar
-		</button>
+	    	<i class="material-icons right">send</i>
+	    </button>
 	</div>
 </form>

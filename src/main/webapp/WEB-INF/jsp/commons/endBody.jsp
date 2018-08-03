@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"%>
 
 
+	</div><!-- /container -->
+
 	<script type="text/javascript" src='<c:url value="/assets/js/jquery-3.2.1.min.js"/>'></script>
 	<script type="text/javascript" src="<c:url value="/assets/materialize/js/materialize.min.js"/>"></script>
 </body>
