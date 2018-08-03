@@ -21,17 +21,20 @@ public class TaskController {
 	private Result result;
 	private ITaskValidator validator;
 	private ITaskService taskService;
+	private Task task;
 	
 	@Deprecated
 	public TaskController() {
-		this(null, null, null);
+		this(null, null, null, null);
 	}
 	
 	@Inject
-	public TaskController(Result result, ITaskValidator validator, ITaskService taskService) {
+	public TaskController(Result result, ITaskValidator validator, 
+							ITaskService taskService, Task task) {
 		this.result = result;
 		this.validator = validator;
 		this.taskService = taskService;
+		this.task = task;
 	}
 	
 	@Get("/cadastro")
@@ -45,8 +48,14 @@ public class TaskController {
 		validator.validate(task);
 		validator.onErrorRedirectTo(this).register();
 
-		taskService.createTask(task);
-		result.include("successMessage", "Tarefa cadastrada com sucesso!");
+		if(task.getId() == null) {
+			taskService.createTask(task);
+			result.include("successMessage", "Tarefa cadastrada com sucesso!");
+		} else {
+			taskService.editTask(task);
+			result.include("successMessage", "Tarefa editada com sucesso!");
+		}
+		
 		result.redirectTo(HomeController.class).home();
 	}
 	
@@ -56,6 +65,22 @@ public class TaskController {
 		taskService.remove(id);
 		result.include("successMessage", "Tarefa excluída com sucesso!");
 		result.redirectTo(HomeController.class).home();
+	}
+	
+	@DataBaseAccess
+	@Get("/finalizar/{id}")
+	public void finish(Long id) {
+		taskService.finish(id);
+		result.include("successMessage", "Tarefa finalizada!");
+		result.redirectTo(HomeController.class).home();
+	}
+	
+	@DataBaseAccess
+	@Get("editar/{id}")
+	public void edit(Long id) {
+		task = taskService.get(id);
+		result.include(task);
+		result.include("title", "Editar - " + task.getName());
 	}
 	
 }

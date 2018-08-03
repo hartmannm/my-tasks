@@ -49,6 +49,14 @@ public class TaskRepository implements ITaskRepository {
 		manager.remove(task);
 	}
 
+	@Override
+	public void finish(Task task) {
+		manager.merge(task);
+	}
 	
+	@Override
+	public void edit(Task task) {
+		manager.merge(task);
+	}
 
 }

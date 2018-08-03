@@ -1,6 +1,5 @@
 package br.com.myTasks.models.services;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,20 +20,21 @@ public class TaskService implements ITaskService {
 	
 	private ISession session;
 	private ITaskRepository taskRepository;
+	private Task task;
 	
-	private List<Task> pastTasks;
-	private List<Task> presentTasks;
-	private List<Task> futureTasks;
+	private List<Task> notFinishedTasks;
+	private List<Task> finishedTasks;
 	
 	@Deprecated
 	public TaskService() {
-		this(null, null);
+		this(null, null, null);
 	}
 	
 	@Inject
-	public TaskService(ISession session, ITaskRepository taskRepository) {
+	public TaskService(ISession session, ITaskRepository taskRepository, Task task) {
 		this.session = session;
 		this.taskRepository = taskRepository;
+		this.task = task;
 	}
 
 	@Override
@@ -62,33 +62,52 @@ public class TaskService implements ITaskService {
 	
 	@Override
 	public void remove(Long id) {
-		Task task = taskRepository.get(id);
+		task = taskRepository.get(id);
 		taskRepository.remove(task);
 	}
 
+	@Override
+	public void finish(Long id) {
+		task = taskRepository.get(id);
+		task.setFinished(true);
+		taskRepository.finish(task);
+	}
+	
+	@Override
+	public Task get(Long id) {
+		return taskRepository.get(id);
+	}
+	
+	@Override
+	public void editTask(Task task) {
+		Task dbTask = taskRepository.get(task.getId());
+		dbTask.setName(task.getName());
+		dbTask.setDate(task.getDate());
+		dbTask.setHour(task.getHour());
+		dbTask.setFinished(task.isFinished());
+		dbTask.setDetails(task.getDetails());
+		taskRepository.edit(dbTask);
+	}
+	
 	//métodos para criar e preencher lists e maps
 	private void createLists() {
-		pastTasks = new ArrayList<>();
-		presentTasks = new ArrayList<>();
-		futureTasks = new ArrayList<>();
+		notFinishedTasks = new ArrayList<>();
+		finishedTasks = new ArrayList<>();
 	}
 	
 	private void fillLists(List<Task> list) {
 		for (Task task : list) {
-			if(task.getDate().isBefore(LocalDate.now())) {
-				pastTasks.add(task);
-			} else if(task.getDate().isAfter(LocalDate.now())) {
-				futureTasks.add(task);
+			if(task.isFinished()) {
+				finishedTasks.add(task);
 			} else {
-				presentTasks.add(task);
+				notFinishedTasks.add(task);
 			}
 		}
 	}
 	
 	private void fillMap(Map<String, List<Task>> map) {
-		map.put("pastTasks", pastTasks);
-		map.put("presentTasks", presentTasks);
-		map.put("futureTasks", futureTasks);
+		map.put("notFinishedTasks", notFinishedTasks);
+		map.put("finishedTasks", finishedTasks);
 	}
 
 }

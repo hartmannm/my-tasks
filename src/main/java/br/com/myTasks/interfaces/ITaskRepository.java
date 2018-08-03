@@ -15,4 +15,8 @@ public interface ITaskRepository {
 	
 	void remove(Task task);
 
+	void finish(Task task);
+
+	void edit(Task task);
+
 }

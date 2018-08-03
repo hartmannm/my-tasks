@@ -5,6 +5,9 @@
     <form method="POST" action="${linkTo[TaskController].register}">
 	<!--tarefa-->
 	<div>
+		<input type="hidden" name="task.id" value="${task.id}">
+	</div>
+	<div>
 		<label for="task.name">Tarefa</label>
 		<input type="text" name="task.name" value="${task.name}">
 		<span>${errors.from('task.name')}</span>
@@ -35,5 +38,8 @@
 		<button type="reset">
 			Limpar
 		</button>
+		<c:if test="${not empty task.id}">
+			<a href="${linkTo[HomeController].home}">Cancelar</a>
+		</c:if>
 	</div>
 </form>

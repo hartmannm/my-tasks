@@ -12,19 +12,14 @@
 	</c:if>
 	
     
-    <h2>Tarefas Passadas</h2>
-    <c:if test="${not empty pastTasks}">
-		<c:import url="pastTasksTable.jsp" />
-	</c:if>
-    <br/>
-    <h2>Tarefas para hoje</h2>
-    <c:if test="${not empty presentTasks}">
-		<c:import url="presentTasksTable.jsp" />
-	</c:if>
-    <br/>
-    <h2>Tarefas futuras</h2>
-    <c:if test="${not empty futureTasks}">
-		<c:import url="futureTasksTable.jsp" />
+    <h2>Tarefas em aberto</h2>
+	    <c:if test="${not empty notFinishedTasks}">
+			<c:import url="notFinishedTasks.jsp" />
+		</c:if>
+	    <br/>
+    <h2>Tarefas finalizadas</h2>
+    <c:if test="${not empty finishedTasks}">
+		<c:import url="finishedTasks.jsp" />
 	</c:if>
     
     <c:import url="../commons/endBody.jsp" />

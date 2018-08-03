@@ -35,6 +35,10 @@
 				    	</c:choose>
 	    			</td>
 	    			<td>
+	    				<c:if test="${not task.finished}">
+	    					<a href="${linkTo[TaskController].finish(task.id)}">Finalizar</a>
+	    				</c:if>
+	    				<a href="${linkTo[TaskController].edit(task.id)}">Editar</a>
 	    				<a href="${linkTo[TaskController].remove(task.id)}">Excluir</a>
 	    			</td>
 	    		</tr>
