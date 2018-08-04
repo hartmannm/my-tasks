@@ -16,7 +16,7 @@
 				    	<a href="${linkTo[TaskController].register}">Cadastrar tarefa</a>
 				    </li>
 				    <li>
-						<a href="#">Sair</a>
+						<a href="${linkTo[LoginController].logout}">Sair</a>
 					</li>
 			    </ul>
 		    </div>
@@ -30,7 +30,7 @@
 		    	<a href="${linkTo[TaskController].register}">Cadastrar tarefa</a>
 		    </li>
 		    <li>
-				<a href="#">Sair</a>
+				<a href="<a href="${linkTo[LoginController].logout}">Sair</a>">Sair</a>
 			</li>
 		</ul>
 	</div>

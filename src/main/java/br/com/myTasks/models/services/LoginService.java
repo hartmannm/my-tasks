@@ -7,6 +7,7 @@ import br.com.myTasks.exceptions.UserExistenceExcepion;
 import br.com.myTasks.interfaces.IEncrypt;
 import br.com.myTasks.interfaces.ILoginRepository;
 import br.com.myTasks.interfaces.ILoginService;
+import br.com.myTasks.interfaces.ISession;
 import br.com.myTasks.models.entityes.User;
 
 @RequestScoped
@@ -14,16 +15,18 @@ public class LoginService implements ILoginService {
 
 	private IEncrypt encrypt;
 	private ILoginRepository loginRepository;
+	private ISession session;
 
 	@Deprecated
 	public LoginService() {
-		this(null, null);
+		this(null, null, null);
 	}
 
 	@Inject
-	public LoginService(IEncrypt encrypt, ILoginRepository loginRepository) {
+	public LoginService(IEncrypt encrypt, ILoginRepository loginRepository, ISession session) {
 		this.encrypt = encrypt;
 		this.loginRepository = loginRepository;
+		this.session = session;
 	}
 
 	@Override
@@ -37,6 +40,11 @@ public class LoginService implements ILoginService {
 		}
 
 		return dbUser;
+	}
+
+	@Override
+	public void logout() {
+		session.logout();
 	}
 
 }

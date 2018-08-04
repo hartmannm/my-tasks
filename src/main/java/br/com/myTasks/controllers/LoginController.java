@@ -57,4 +57,10 @@ public class LoginController {
 		}
 	}
 	
+	@Get("/logout")
+	public void logout() {
+		loginService.logout();
+		result.redirectTo(this).login();
+	}
+	
 }
