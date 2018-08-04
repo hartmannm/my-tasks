@@ -3,4 +3,5 @@ $(document).ready(function() {
 	$('.tabs').tabs();
 	$('.tooltipped').tooltip();
 	$('#task-details').characterCounter();
+	$('.sidenav').sidenav();
 });

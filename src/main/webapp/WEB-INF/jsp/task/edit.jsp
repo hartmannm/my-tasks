@@ -3,21 +3,24 @@
     pageEncoding="UTF-8"%>
 
 	<c:import url="../commons/head.jsp" />
-
-	<div class="row">
-    	<div class="col s12">
-    	
-	    	<main>
-	    		<div class="card-panel">
-       				<c:if test="${not empty errorMessage}">
-						<c:import url="../commons/msgErrorAlert.jsp" />
-					</c:if>
-				    
-				    <c:import url="form.jsp" />
-     			</div>
-	    	</main>
+	
+	<c:import url="../commons/navbar.jsp" />
+    
+    <div class="container">
+		<div class="row">
+	    	<div class="col s12">
 	    	
-    	</div>
-    </div>
+		    	<main>
+		    		<div class="card-panel">
+	       				<c:if test="${not empty errorMessage}">
+							<c:import url="../commons/msgErrorAlert.jsp" />
+						</c:if>
+					    
+					    <c:import url="form.jsp" />
+	     			</div>
+		    	</main>
+		    	
+	    	</div>
+	    </div>
 
 	<c:import url="../commons/endBody.jsp" />
