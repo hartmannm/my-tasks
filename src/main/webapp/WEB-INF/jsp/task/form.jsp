@@ -27,7 +27,7 @@
 	<!--observações-->
 	<div class="input-field col s12">
 		<label for="task.details">Observações</label>
-		<textarea name="task.details" rows="3" class="materialize-textarea">${task.details}</textarea>
+		<textarea id="task-details" name="task.details" rows="3" class="materialize-textarea"  data-length="100">${task.details}</textarea>
 		<span>${errors.from('task.details')}</span>
 	</div>
 
