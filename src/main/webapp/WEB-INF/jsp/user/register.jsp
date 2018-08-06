@@ -4,11 +4,12 @@
 
     <c:import url="../commons/head.jsp" />
 	
-	<div class="row">
-    	<div class="col s12">
-    	
-	    	<main>
-	    		<div class="card-panel">
+	<div class="container">
+		<div class="row">
+	    	<div class="col s12">
+	    	
+		    	<main>
+		    		
        				<c:if test="${not empty errorMessage}">
 						<c:import url="../commons/msgErrorAlert.jsp" />
 					</c:if>
@@ -50,10 +51,10 @@
 							</button>
 						</div>
 					</form>
-     			</div>
-	    	</main>
-	    	
-    	</div>
-    </div>
+	     			
+		    	</main>
+		    	
+	    	</div>
+	    </div>
 
     <c:import url="../commons/endBody.jsp" />

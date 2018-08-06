@@ -11,13 +11,11 @@
 	    	<div class="col s12">
 	    	
 		    	<main>
-		    		<div class="card-panel">
-	       				<c:if test="${not empty errorMessage}">
-							<c:import url="../commons/msgErrorAlert.jsp" />
-						</c:if>
-					    
-					    <c:import url="form.jsp" />
-	     			</div>
+       				<c:if test="${not empty errorMessage}">
+						<c:import url="../commons/msgErrorAlert.jsp" />
+					</c:if>
+				    
+				    <c:import url="form.jsp" />
 		    	</main>
 		    	
 	    	</div>

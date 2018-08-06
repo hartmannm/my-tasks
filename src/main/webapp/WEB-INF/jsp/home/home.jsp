@@ -31,7 +31,6 @@
 	    </div>
 	    
 		<div id="notFinishedTasks">
-		
 			<table class="striped">
 			    <thead>
 			    	<tr>
