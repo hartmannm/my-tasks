@@ -1,0 +1,16 @@
+body {
+	background-image: url("../img/login-bg.jpg");
+}
+
+button {
+	margin-bottom: 10px;	
+}
+
+h1 {
+	font-size:3em;
+	margin-top:0;
+}
+
+.link {
+	font-size:1.2em;
+}

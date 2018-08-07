@@ -10,25 +10,25 @@
 	<div class="input-field col s12">
 		<label for="task.name">Tarefa</label>
 		<input type="text" name="task.name" value="${task.name}">
-		<span>${errors.from('task.name')}</span>
+		<span class="error">${errors.from('task.name')}</span>
 	</div>
 	<!--data-->
 	<div class="input-field col s12">
 		<input type="date" name="task.date" value="${task.date}"> 
 		<label for="task.date">Data</label>
-		<span>${errors.from('task.date')}</span>
+		<span class="error">${errors.from('task.date')}</span>
 	</div>
 	<!--horario-->
 	<div class="input-field col s12">
 		<input type="time" name="task.hour" value="${task.hour}"> 
 		<label for="task.hour">Horário</label>
-		<span>${errors.from('task.hour')}</span>
+		<span class="error">${errors.from('task.hour')}</span>
 	</div>
 	<!--observações-->
 	<div class="input-field col s12">
 		<label for="task.details">Observações</label>
 		<textarea id="task-details" name="task.details" rows="3" class="materialize-textarea"  data-length="100">${task.details}</textarea>
-		<span>${errors.from('task.details')}</span>
+		<span class="error">${errors.from('task.details')}</span>
 	</div>
 
 	<div>

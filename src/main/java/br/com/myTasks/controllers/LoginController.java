@@ -40,6 +40,7 @@ public class LoginController {
 	@Get("/login")
 	public void login() {
 		result.include("title", "Login");
+		result.include("specificCSS", "login");
 	}
 	
 	@DataBaseAccess
