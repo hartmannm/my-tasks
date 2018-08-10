@@ -1,5 +1,6 @@
 package br.com.myTasks.controllers;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -16,6 +17,7 @@ import br.com.myTasks.models.entityes.Task;
 @Controller
 @Path("/tarefa")
 @NeedToBeLogged
+@RequestScoped
 public class TaskController {
 
 	private Result result;

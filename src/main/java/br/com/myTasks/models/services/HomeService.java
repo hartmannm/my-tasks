@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.myTasks.exceptions.NoTasksException;
@@ -13,12 +14,14 @@ import br.com.myTasks.interfaces.ITaskRepository;
 import br.com.myTasks.models.entityes.Task;
 import br.com.myTasks.models.entityes.User;
 
+@RequestScoped
 public class HomeService implements IHomeService {
 
 	private ITaskRepository taskRepository;
 	
 	private List<Task> notFinishedTasks;
 	private List<Task> finishedTasks;
+	private Map<String, List<Task>> map;
 	
 	@Deprecated
 	public HomeService() {
@@ -28,6 +31,8 @@ public class HomeService implements IHomeService {
 	@Inject
 	public HomeService(ITaskRepository taskRepository) {
 		this.taskRepository = taskRepository;
+		notFinishedTasks = new ArrayList<>();
+		finishedTasks = new ArrayList<>();
 	}
 	
 	@Override
@@ -37,19 +42,14 @@ public class HomeService implements IHomeService {
 			throw new NoTasksException("Nenhuma tarefa cadastrada");
 		}
 		
-		createLists();
 		fillLists(list);
 		
-		Map<String, List<Task>> map = new HashMap<>();
+		map = new HashMap<>();
 		fillMap(map);
 		return map;
 	}
 
 	// métodos para criar e preencher lists e maps
-	private void createLists() {
-		notFinishedTasks = new ArrayList<>();
-		finishedTasks = new ArrayList<>();
-	}
 
 	private void fillLists(List<Task> list) {
 		for (Task task : list) {

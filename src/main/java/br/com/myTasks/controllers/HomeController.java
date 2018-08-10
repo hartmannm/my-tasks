@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.com.myTasks.annotations.DataBaseAccess;
 import br.com.myTasks.annotations.NeedToBeLogged;
 import br.com.myTasks.exceptions.NoTasksException;
 import br.com.myTasks.interfaces.IHomeService;
@@ -24,6 +23,7 @@ public class HomeController {
 	private Result result;
 	private IHomeService homeService;
 	private ISession session;
+	private Map<String, List<Task>> map;
 
 	@Deprecated
 	public HomeController() {
@@ -37,15 +37,14 @@ public class HomeController {
 		this.session = session;
 	}
 
-	@DataBaseAccess
 	@Path("/")
 	public void home() {
 		result.include("title", "Ínicio");
+		result.include("specificCSS", "main");
 		try {
-			Map<String, List<Task>> map = homeService.getTaskList(session.getUser());
+			map = homeService.getTaskList(session.getUser());
 			result.include("notFinishedTasks", map.get("notFinishedTasks"));
 			result.include("finishedTasks", map.get("finishedTasks"));
-			result.include("specificCSS", "main");
 		} catch(NoTasksException e) {
 			result.include("alertMessage", e.getMessage());
 		}
