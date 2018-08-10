@@ -45,6 +45,7 @@ public class HomeController {
 			Map<String, List<Task>> map = homeService.getTaskList(session.getUser());
 			result.include("notFinishedTasks", map.get("notFinishedTasks"));
 			result.include("finishedTasks", map.get("finishedTasks"));
+			result.include("specificCSS", "main");
 		} catch(NoTasksException e) {
 			result.include("alertMessage", e.getMessage());
 		}

@@ -7,11 +7,6 @@
 		    	<div class="left-align">
 		    		<span >${alertMessage}</span>
 		    	</div>
-			    <div class="right-align">
-			    	<span >
-    					<i class="material-icons" id="alert_close" aria-hidden="true">close</i>
-  					</span>
-			    </div>
 		    </div>
 	    </div>
    	</div>

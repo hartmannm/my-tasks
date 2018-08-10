@@ -40,6 +40,7 @@ public class TaskController {
 	@Get("/cadastro")
 	public void register() {
 		result.include("title", "Cadastro de tarefa");
+		result.include("specificCSS", "main");
 	}
 	
 	@DataBaseAccess
@@ -81,6 +82,7 @@ public class TaskController {
 		task = taskService.get(id);
 		result.include(task);
 		result.include("title", "Editar - " + task.getName());
+		result.include("specificCSS", "main");
 	}
 	
 }

@@ -31,7 +31,7 @@
 		<span class="error">${errors.from('task.details')}</span>
 	</div>
 
-	<div>
+	<div class="row">
 		<button type="submit" class="btn">
 			Cadastrar
 		</button>
