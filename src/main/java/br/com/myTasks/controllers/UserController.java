@@ -38,6 +38,7 @@ public class UserController {
 	@Get("/cadastro")
 	public void register() {
 		result.include("title", "Cadastro de usuário");
+		result.include("specificCSS", "login-createUser");
 	}
 	
 	@DataBaseAccess
